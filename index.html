@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mishika Chawla: data scientist, from a business family on both sides, ready to build.">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Mishika Chawla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Yatra+One&display=swap">
+<style>
+/* Layout: a bahi-khata forged in a foundry. An iron cover with ember type opens onto ruled ledger pages; each section is one page of the account book. */
+:root{
+  --cover:#101411; --cover-ink:#EEF3EE; --gold:#3DDC84;
+  --paper:#EFF2EE; --page:#FBFCFA; --rule:#D3DBD4; --margin:#2E9E5B;
+  --ink:#151B16; --muted:#5D6A60; --accent:#1C7A44; --chip:#DCEFE2;
+  --felt:#1E4F7A; --felt-line:#F4EDE4;
+  --display:"Young Serif", Georgia, "Times New Roman", serif;
+  --body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --deva:"Yatra One", "Noto Sans Devanagari", serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --cover:#0A0D0B; --cover-ink:#EEF3EE; --gold:#4FE08A;
+  --paper:#0F1310; --page:#161B17; --rule:#2A332C; --margin:#2E9E5B;
+  --ink:#E8EFE9; --muted:#A3B0A6; --accent:#56D98C; --chip:#15301F;
+  --felt:#1A3F61; --felt-line:#EDE6DC; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --cover:#0A0D0B; --cover-ink:#EEF3EE; --gold:#4FE08A;
+  --paper:#0F1310; --page:#161B17; --rule:#2A332C; --margin:#2E9E5B;
+  --ink:#E8EFE9; --muted:#A3B0A6; --accent:#56D98C; --chip:#15301F;
+  --felt:#1A3F61; --felt-line:#EDE6DC; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ---------- COVER ---------- */
+.cover{background:var(--cover);color:var(--cover-ink);position:relative;overflow:hidden}
+.cover::before{content:"";position:absolute;inset:auto -10% -60% -10%;height:120%;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 100%,rgba(46,158,91,.45),rgba(61,220,132,.12) 40%,transparent 70%);animation:glow 5s ease-in-out infinite alternate}
+@keyframes glow{to{opacity:.6}}
+.cover .wrap{padding-block:56px 40px;position:relative;z-index:1;display:grid;gap:28px}
+.shubh{font-family:var(--deva);color:var(--gold);font-size:22px;letter-spacing:.06em;text-align:center}
+.cover h1{font-size:clamp(44px,9vw,92px);line-height:1;letter-spacing:-.01em}
+.cover h1 span{color:var(--gold)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.lede{font-size:clamp(19px,2.6vw,25px);line-height:1.4;max-width:30ch;font-family:var(--display);margin:0}
+.lede em{font-style:normal;color:var(--gold)}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:32px;align-items:end}
+.hero-grid>*{min-width:0}
+.chart{width:100%;height:auto;max-width:100%;display:block}
+.chart .grid{stroke:var(--cover-ink);opacity:.14}
+.chart .hist{fill:none;stroke:var(--cover-ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:900;animation:draw 1.8s .2s ease-out both}
+.chart .band{fill:var(--margin);opacity:.25;animation:fade .8s 1.7s both}
+.chart .fc{fill:none;stroke:var(--gold);stroke-width:2.5;stroke-dasharray:6 7;animation:fade .8s 1.7s both}
+.chart .now{fill:var(--cover-ink)}
+.chart .lbl{fill:var(--cover-ink);font-family:var(--mono);font-size:11px;letter-spacing:.08em;opacity:.75}
+.chart .lbl.g{fill:var(--gold);opacity:1}
+.chart .pulse{fill:var(--gold);transform-origin:548px 52px;animation:pulse 2s 2.4s infinite}
+@keyframes draw{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
+@keyframes fade{from{opacity:0}}
+@keyframes pulse{0%{transform:scale(1);opacity:.9}70%{transform:scale(2.6);opacity:0}100%{opacity:0}}
+.stamps{display:flex;flex-wrap:wrap;gap:10px}
+.stamp{border:1.5px solid var(--gold);color:var(--cover-ink);border-radius:999px;padding:6px 14px;font-size:14px}
+.stamp b{color:var(--gold);font-weight:600}
+.contact{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:13px;align-items:center}
+.contact a{color:var(--cover-ink)}
+.copy{font:inherit;background:transparent;border:1px solid var(--gold);color:var(--gold);border-radius:6px;padding:2px 10px;cursor:pointer}
+
+/* ---------- NAV ---------- */
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+nav.tabs .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.tabs a{flex:none;text-decoration:none;color:var(--muted);font-size:14px;padding:6px 12px;border-radius:999px;white-space:nowrap}
+nav.tabs a:hover{background:var(--chip);color:var(--ink)}
+nav.tabs a b{font-family:var(--deva);font-weight:400;color:var(--accent);margin-right:6px}
+
+/* ---------- LEDGER PAGES ---------- */
+section.page{padding-block:56px 8px}
+.sheet{background:var(--page);border:1px solid var(--rule);border-radius:4px;position:relative;
+  padding:32px 24px 32px 64px;
+  background-image:linear-gradient(to right,transparent 46px,var(--margin) 46px,var(--margin) 47px,transparent 47px,transparent 51px,var(--margin) 51px,var(--margin) 52px,transparent 52px),
+                   repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px);
+  background-position:0 0,0 18px}
+.pg{position:absolute;left:12px;top:30px;font-family:var(--mono);font-size:11px;color:var(--margin);writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.15em}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:flex;gap:10px;align-items:baseline}
+.eyebrow .hi{font-family:var(--deva);font-size:18px;letter-spacing:0;text-transform:none}
+h2{font-size:clamp(30px,5vw,46px);line-height:1.08;margin:8px 0 14px}
+.intro{max-width:62ch;color:var(--muted);margin:0 0 26px;font-size:17px}
+.sub{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:34px 0 14px}
+
+/* Khoon */
+.tree{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.side{border:1px solid var(--rule);background:var(--paper);border-radius:4px;padding:20px;display:grid;gap:6px;align-content:start}
+.side .who{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.side h3{font-size:26px;color:var(--accent)}
+.side p{margin:0}
+.merge{grid-column:1/-1;display:block;width:100%;height:70px}
+.merge path{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:4 6;animation:march 1.2s linear infinite}
+@keyframes march{to{stroke-dashoffset:-20}}
+.me{grid-column:1/-1;justify-self:center;text-align:center;max-width:54ch;background:var(--cover);color:var(--cover-ink);border-radius:4px;padding:22px 26px}
+.me h3{font-size:28px;color:var(--gold);margin-bottom:6px}
+.me p{margin:0}
+
+/* Cities */
+.route{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
+.route::before{content:"";position:absolute;left:16%;right:16%;top:22px;border-top:3px dotted var(--accent)}
+.stop{position:relative;z-index:1;background:none;border:0;cursor:pointer;display:grid;justify-items:center;gap:8px;color:var(--ink);font:inherit;padding:0}
+.stop .dot{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);background:var(--page);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--accent);transition:transform .2s}
+.stop[aria-selected="true"] .dot{background:var(--accent);color:var(--page);transform:scale(1.12)}
+.stop .nm{font-family:var(--display);font-size:20px}
+.stop .yr{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.city-card{border-left:3px solid var(--accent);padding:6px 0 6px 18px;min-height:150px;display:grid;gap:8px;align-content:start}
+.city-card h3{font-size:24px}
+.city-card p{margin:0;max-width:62ch}
+.city-card .tag{font-family:var(--deva);color:var(--accent);font-size:18px}
+.city-card .saw{font-family:var(--display);font-size:19px;color:var(--accent)}
+.city-card .lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* Khata table */
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:15px}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-align:left;padding:8px 10px;border-bottom:2px solid var(--accent)}
+th small{display:block;font-family:var(--deva);letter-spacing:0;font-size:15px;text-transform:none}
+td{padding:12px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+td.dt{font-family:var(--mono);font-size:13px;white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums}
+td.en b{display:block;font-weight:600}
+td.jm .n{font-family:var(--mono);color:var(--accent);font-weight:600}
+tr.total td{border-top:2px solid var(--accent);border-bottom:4px double var(--accent);font-family:var(--display);font-size:19px}
+
+/* Lens */
+.thesis{font-family:var(--display);font-size:clamp(24px,3.6vw,34px);line-height:1.25;max-width:28ch;margin:0 0 10px}
+.thesis mark{background:linear-gradient(transparent 60%,var(--chip) 60%);color:inherit}
+.notices{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.flip{perspective:900px;background:none;border:0;padding:0;text-align:left;font:inherit;color:inherit;cursor:pointer;min-height:168px;display:grid}
+.flip .in{position:relative;display:grid;transition:transform .6s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+.flip[aria-pressed="true"] .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:4px;padding:18px;display:grid;gap:8px;align-content:space-between}
+.flip .f{background:var(--paper);border:1px solid var(--rule)}
+.flip .b{background:var(--cover);color:var(--cover-ink);transform:rotateY(180deg)}
+.flip .f p{margin:0;font-family:var(--display);font-size:19px;line-height:1.3}
+.flip .b p{margin:0;font-size:15px}
+.flip .b b{color:var(--gold);font-weight:600}
+.flip .hint{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.flip .b .hint{color:var(--gold)}
+.rule-line{margin:22px 0 0;font-family:var(--display);font-size:22px;color:var(--accent);max-width:34ch}
+.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.proof div{border-top:2px solid var(--ink);padding-top:12px}
+.proof h3{font-family:var(--body);font-weight:700;font-size:16px;margin-bottom:4px}
+.proof p{margin:0;color:var(--muted);font-size:15px}
+
+/* Off the clock */
+.play{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;align-items:start}
+.play>*{min-width:0}
+.tt{background:var(--felt);border-radius:6px;padding:14px;color:var(--felt-line)}
+.tt canvas{width:100%;height:auto;aspect-ratio:2/1;display:block;max-width:100%}
+.tt .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;font-family:var(--mono);font-size:13px;flex-wrap:wrap}
+.tt button{font:inherit;background:var(--felt-line);color:var(--felt);border:0;border-radius:999px;padding:6px 16px;cursor:pointer;font-weight:600}
+.tt .dare{font-family:var(--display);font-size:20px;margin:10px 0 0}
+.groups{display:grid;gap:18px}
+.grp h3{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{border:1px solid var(--rule);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:14px}
+.tag b{font-weight:600}
+.book{display:grid;grid-template-columns:86px 1fr;gap:18px;align-items:center;margin-top:30px;padding-top:24px;border-top:1px solid var(--rule)}
+.spine{aspect-ratio:2/3;background:#F7D24A;border-radius:2px 6px 6px 2px;box-shadow:inset 6px 0 0 rgba(0,0,0,.12),0 6px 14px rgba(0,0,0,.18);display:grid;place-items:center;font-family:var(--display);color:#3A2508;font-size:15px;text-align:center;padding:6px;line-height:1.1;transform:rotate(-4deg)}
+.book h3{font-size:24px}
+.book p{margin:4px 0 0;max-width:58ch}
+.book .by{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em}
+
+/* Reel */
+.reel{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+.pol{background:var(--page);border:1px solid var(--rule);padding:10px 10px 12px;box-shadow:0 8px 18px rgba(0,0,0,.12);display:grid;gap:8px;transform:rotate(var(--r))}
+.pol .ph{aspect-ratio:4/5;background:var(--chip);display:grid;place-items:center;overflow:hidden;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:8px}
+.pol .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.pol span{font-family:var(--display);font-size:16px;text-align:center}
+.reel.go .pol{animation:popin .5s cubic-bezier(.3,1.5,.5,1) both;animation-delay:calc(var(--i) * .35s)}
+@keyframes popin{from{transform:scale(.6) rotate(0);opacity:0}to{transform:rotate(var(--r));opacity:1}}
+
+/* Currently */
+.now-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 28px}
+.now-row{display:grid;grid-template-columns:100px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.now-row .k{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding-top:3px}
+.now-row p{margin:0}
+
+/* Close */
+.close{background:var(--cover);color:var(--cover-ink);margin-top:64px;position:relative;overflow:hidden}
+.close::before{content:"";position:absolute;inset:auto -10% -70% -10%;height:120%;background:radial-gradient(ellipse at 50% 100%,rgba(46,158,91,.35),transparent 65%);pointer-events:none}
+.close .wrap{padding-block:56px;display:grid;gap:16px;justify-items:start;position:relative}
+.close h2{color:var(--cover-ink);max-width:18ch}
+.close h2 span{color:var(--gold)}
+.close p{max-width:56ch;margin:0}
+.sign{font-family:var(--deva);color:var(--gold);font-size:26px}
+
+@media (max-width:720px){
+  .hero-grid,.play{grid-template-columns:1fr}
+  .tree{grid-template-columns:1fr}
+  .merge{display:none}
+  .reel{grid-template-columns:repeat(2,1fr)}
+  .sheet{padding:26px 16px 26px 44px;background-image:linear-gradient(to right,transparent 28px,var(--margin) 28px,var(--margin) 29px,transparent 29px),repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px)}
+  .pg{left:6px}
+  .route .nm{font-size:17px}
+  .now-row{grid-template-columns:1fr;gap:2px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+
+</head>
+<body>
+<header class="cover">
+  <div class="wrap">
+    <div class="shubh">॥ शुभ लाभ ॥</div>
+    <div class="hero-grid">
+      <div style="display:grid;gap:18px">
+        <div class="kicker">A new khata, opened by the third generation</div>
+        <h1>Mishika<br><span>Chawla</span></h1>
+        <p class="lede">For two years, my job has been predicting what people will buy. <em>Now I want to make the thing they buy.</em></p>
+      </div>
+      <svg class="chart" viewBox="0 0 600 260" role="img" aria-label="A demand line rising over two years, then a dashed forecast heading higher toward the next thing">
+        <g class="grid"><line x1="20" y1="60" x2="590" y2="60"/><line x1="20" y1="120" x2="590" y2="120"/><line x1="20" y1="180" x2="590" y2="180"/><line x1="20" y1="230" x2="590" y2="230"/></g>
+        <path class="hist" d="M20 205 C50 200 60 214 85 196 S120 170 145 186 S185 150 210 168 S250 128 275 146 S310 112 340 126 S375 96 400 104"/>
+        <path class="band" d="M400 104 C440 92 480 70 548 30 L548 92 C480 110 440 116 400 104Z"/>
+        <path class="fc" d="M400 104 C440 96 490 76 548 52"/>
+        <circle class="now" cx="400" cy="104" r="5"/>
+        <circle class="pulse" cx="548" cy="52" r="6"/>
+        <circle cx="548" cy="52" r="6" fill="var(--gold)"/>
+        <text class="lbl" x="20" y="252">2024 &middot; DEMAND I FORECAST</text>
+        <text class="lbl" x="400" y="130" text-anchor="middle">TODAY</text>
+        <text class="lbl g" x="590" y="28" text-anchor="end">NEXT: WHAT I BUILD</text>
+      </svg>
+    </div>
+    <div class="contact">
+      <span id="em">mishikachawla444@gmail.com</span>
+      <button class="copy" id="copyBtn" type="button">copy</button>
+      <a href="https://www.linkedin.com/in/mishikachawla" target="_blank" rel="noopener">linkedin</a>
+      <span>Gurugram, India</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <a href="#khoon"><b>१</b>The khoon</a>
+    <a href="#shehar"><b>२</b>Three cities</a>
+    <a href="#khata"><b>३</b>The khata</a>
+    <a href="#lens"><b>४</b>The lens</a>
+    <a href="#off"><b>५</b>Off the clock</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section class="page" id="khoon">
+    <div class="sheet">
+      <span class="pg">PAGE 01</span>
+      <div class="eyebrow">The khoon <span class="hi">ख़ून</span></div>
+      <h2>Business runs on both sides of the family.</h2>
+      <p class="intro">I grew up where margins, suppliers and festive-season stock were dinner table conversation. I went off to learn data first. Two years in, I know what I'm made for.</p>
+      <div class="tree">
+        <div class="side">
+          <span class="who">Mom's side</span>
+          <h3>Kundan's</h3>
+          <p>Sweets and bakery. A business that lives or dies on whether people come back, box after box, festival after festival.</p>
+        </div>
+        <div class="side">
+          <span class="who">Dad's side</span>
+          <h3>Apparel Manufacturing &amp; Wholesale</h3>
+          <p>Fabric to factory floor to wholesale networks. Production runs, distribution, and the hard arithmetic of getting a product onto a shelf.</p>
+        </div>
+        <svg class="merge" viewBox="0 0 400 70" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M100 0 C100 40 200 30 200 70"/><path d="M300 0 C300 40 200 30 200 70"/>
+        </svg>
+        <div class="me">
+          <h3>And then me.</h3>
+          <p>One side taught me why people come back. The other taught me what it takes to make the thing. Data taught me to see both in the numbers. Now I want to take the reins on something of my own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="shehar">
+    <div class="sheet">
+      <span class="pg">PAGE 02</span>
+      <div class="eyebrow">Three cities <span class="hi">शहर</span></div>
+      <h2>Three cities, three ways of buying.</h2>
+      <p class="intro">I've lived in three of India's biggest consumer markets, and they buy very differently. Tap a stop.</p>
+      <div class="route" role="tablist" aria-label="Cities">
+        <button class="stop" role="tab" id="c-bom" aria-selected="true" data-c="0"><span class="dot">BOM</span><span class="nm">Mumbai</span></button>
+        <button class="stop" role="tab" id="c-blr" aria-selected="false" data-c="1"><span class="dot">BLR</span><span class="nm">Bangalore</span></button>
+        <button class="stop" role="tab" id="c-del" aria-selected="false" data-c="2"><span class="dot">GGN</span><span class="nm">Gurugram</span></button>
+      </div>
+      <div class="city-card" role="tabpanel" aria-live="polite" id="cityCard"></div>
+    </div>
+  </section>
+
+  <section class="page" id="khata">
+    <div class="sheet">
+      <span class="pg">PAGE 03</span>
+      <div class="eyebrow">The khata <span class="hi">खाता</span></div>
+      <h2>Every entry so far, and what it paid back.</h2>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Date</th><th>Entry</th><th>Jama <small>जमा, what it paid back</small></th></tr></thead>
+          <tbody>
+            <tr><td class="dt">2021–24</td><td class="en"><b>B.Sc. Applied Statistics &amp; Analytics</b>NMIMS, Mumbai</td><td class="jm">CGPA <span class="n">3.42/4</span>. Taught myself machine learning on the side, then certified in ML and Neural Networks with Stanford and DeepLearning.AI.</td></tr>
+            <tr><td class="dt">2023</td><td class="en"><b>Data Science Intern</b>Publicis Sapient</td><td class="jm">A data science internship. Fraud detection on <span class="n">1M+</span> transactions, <span class="n">76%</span> recall, <span class="n">$500K+</span> in projected fraud prevented.</td></tr>
+            <tr><td class="dt">Oct 2024</td><td class="en"><b>Pre-placement offer: Senior Data Science Associate</b>Joined at 20, youngest in my batch. Forecasting demand for global consumer brands</td><td class="jm">On <b>Bodhi Forecast</b>, built an agentic AI forecasting system that runs from raw data to evaluation, and wired its forecasts into supply chain and inventory planning.</td></tr>
+            <tr><td class="dt">2026</td><td class="en"><b>Consumer health forecasting</b>For a global consumer brand</td><td class="jm">Hands-on data scientist on the MVP. Built hierarchical demand forecasts on GCP with LightGBM, TFT and TiDE, and used SHAP to explain what actually moves demand. Forecast error close to <span class="n">5%</span>.</td></tr>
+            <tr class="total"><td class="dt"></td><td>Balance carried forward</td><td>Ready to build.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="lens">
+    <div class="sheet">
+      <span class="pg">PAGE 04</span>
+      <div class="eyebrow">The lens <span class="hi">नज़र</span></div>
+      <h2>Things I notice.</h2>
+      <p class="intro">In the data, every one of these is a completed sale. Tap a card to see what the spreadsheet sees.</p>
+      <div class="notices" id="notices"></div>
+      <p class="rule-line">A workaround tells you more than a complaint ever will.</p>
+
+    </div>
+  </section>
+
+  <section class="page" id="off">
+    <div class="sheet">
+      <span class="pg">PAGE 05</span>
+      <div class="eyebrow">Off the clock <span class="hi">फ़ुर्सत</span></div>
+      <h2>The rest of me.</h2>
+      <div class="play">
+        <div class="tt">
+          <canvas id="tt" width="560" height="280" aria-label="An animated table tennis rally"></canvas>
+          <div class="row"><span>RALLY <b id="rc">0</b></span><button type="button" id="serve">Serve again</button></div>
+          <p class="dare">Up for a match with KB soon.</p>
+        </div>
+        <div class="groups">
+          <div class="now-list" style="grid-template-columns:1fr">
+            <div class="now-row"><span class="k">Handstands</span><p>Freestanding. Failing and getting back up for the past few months.</p></div>
+            <div class="now-row"><span class="k">Dancing</span><p>Whenever there's music, and sometimes when there isn't.</p></div>
+            <div class="now-row"><span class="k">Cards</span><p>Raised on card games with a very large, very loud extended family.</p></div>
+            <div class="now-row"><span class="k">Reading</span><p>Recent favourite: <i>Butter</i> by Asako Yuzuki.</p></div>
+            <div class="now-row"><span class="k">Next</span><p>Always challenging myself with something new. Boxing is next on the list.</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="close">
+  <div class="wrap">
+    <div class="kicker">Closing entry</div>
+    <h2>Two years learning how big brands work. <span>Time to take the reins.</span></h2>
+    <p>Aapka tajurba. Mera junoon.</p>
+    <div class="sign">मिशिका</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Copy email
+  var btn=document.getElementById('copyBtn'),em=document.getElementById('em');
+  btn.addEventListener('click',function(){
+    var done=function(){btn.textContent='copied';setTimeout(function(){btn.textContent='copy'},1500)};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(em);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='selected'};
+    try{navigator.clipboard.writeText(em.textContent).then(done,fallback)}catch(e){fallback()}
+  });
+
+  // Cities
+  var cities=[
+    {t:'Mumbai',h:'मुंबई',s:['Loyalty is hyperlocal. People will cross the city for one particular vada pav, then switch shampoo brands every month.','Nobody has space, so everything sells in the smallest size that works. The sachet, the quarter kilo, the single piece.']},
+    {t:'Bangalore',h:'बेंगलुरु',s:['No city unwinds on a Friday like this one. Offices empty out early, and the weekend starts by evening.','People spend on experiences over things. Weekends go to a brewery or a trek, not a mall.']},
+    {t:'Gurugram',h:'गुरुग्राम',s:['Premium is the default. People buy the most expensive version, then quietly make it work.','Ten-minute delivery is not a luxury here. It is the expectation, and patience has been priced out.']}
+  ];
+  var card=document.getElementById('cityCard'),stops=[].slice.call(document.querySelectorAll('.stop'));
+  function show(i){stops.forEach(function(s,j){s.setAttribute('aria-selected',j===i?'true':'false')});
+    var c=cities[i];card.innerHTML='<h3>'+c.t+' <span class="tag">'+c.h+'</span></h3><span class="lab">What I noticed</span>'+c.s.map(function(x){return '<p class="saw">'+x+'</p>'}).join('');}
+  stops.forEach(function(s){s.addEventListener('click',function(){show(+s.dataset.c)})});
+  show(0);
+
+  // Things I notice
+  var notes=[
+    ['We send a new kurta to the tailor before it has been worn once.','The data sees <b>a 5-star purchase</b>.'],
+    ['We stuff foam into shoes because the right size never quite fits.','The data sees <b>no return, no complaint</b>.'],
+    ['Half of us quietly shop in the men\'s section.','The data sees <b>a men\'s product, selling well</b>.'],
+    ['There\'s a bucket under almost every RO purifier, catching the wastewater.','The data sees <b>a happy customer</b>.'],
+    ['When a cook leaves, the family\'s taste walks out with them.','The data sees <b>nothing at all</b>. It never got recorded.'],
+    ['I read every fabric label myself, because the website doesn\'t always tell the truth.','The data sees <b>a conversion</b>.']
+  ];
+  var wrap=document.getElementById('notices');
+  notes.forEach(function(n){
+    var b=document.createElement('button');b.type='button';b.className='flip';b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span class="in"><span class="f"><p>'+n[0]+'</p><span class="hint">Tap: what the data sees</span></span><span class="b"><p>'+n[1]+'</p><span class="hint">The business nobody started yet</span></span></span>';
+    b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true')});
+    wrap.appendChild(b);
+  });
+
+  // Adventure reel: add photo files to `src` to fill each frame
+  var shots=[
+    {cap:'Handstand, no wall',src:''},
+    {cap:'Go-karting',src:''},
+    {cap:'Shooting range',src:''},
+    {cap:'The next adventure',src:''}
+  ];
+  var reel=document.getElementById('reel'),rots=[-3,2,-1.5,3];
+  if(reel)shots.forEach(function(s,i){
+    var d=document.createElement('figure');d.className='pol';d.style.setProperty('--r',rots[i%4]+'deg');d.style.setProperty('--i',i);d.style.margin='0';
+    d.innerHTML='<div class="ph">'+(s.src?'<img src="'+s.src+'" alt="'+s.cap+'">':'photo coming')+'</div><span>'+s.cap+'</span>';
+    reel.appendChild(d);
+  });
+  if(reel&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){reel.classList.add('go');io.disconnect()}})},{threshold:.3});
+    io.observe(reel);
+  }
+
+  // Table tennis rally
+  var cv=document.getElementById('tt'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+  var rcEl=document.getElementById('rc'),rally=0,still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var css=function(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()};
+  var b={x:60,y:140,vx:4.2,vy:-1.6,t:0},pl=140,pr=140;
+  function reset(){b={x:60,y:120+Math.random()*40,vx:4.2,vy:(Math.random()-.5)*3,t:0};rally=0;rcEl.textContent=0}
+  function draw(){
+    var line=css('--felt-line'),gold=css('--gold'),acc=css('--margin');
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle=line;ctx.lineWidth=3;ctx.strokeRect(30,20,W-60,H-40);
+    ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(30,H/2);ctx.lineTo(W-30,H/2);ctx.stroke();
+    ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(W/2,10);ctx.lineTo(W/2,H-10);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=acc;ctx.fillRect(14,pl-26,8,52);ctx.fillRect(W-22,pr-26,8,52);
+    var bounce=Math.abs(Math.sin(b.t))*10;
+    ctx.fillStyle='rgba(0,0,0,.25)';ctx.beginPath();ctx.ellipse(b.x,b.y+8,6,3,0,0,7);ctx.fill();
+    ctx.fillStyle=gold;ctx.beginPath();ctx.arc(b.x,b.y-bounce,7,0,7);ctx.fill();
+  }
+  function step(){
+    b.x+=b.vx;b.y+=b.vy;b.t+=.12;
+    if(b.y<34||b.y>H-34)b.vy*=-1;
+    pl+=(b.y-pl)*(b.vx<0?.12:.03);pr+=(b.y-pr)*(b.vx>0?.12:.03);
+    if(b.x>W-30&&b.vx>0||b.x<30&&b.vx<0){b.vx*=-1.02;b.vy=(Math.random()-.5)*4;rally++;rcEl.textContent=rally;
+      if(Math.abs(b.vx)>9)b.vx=Math.sign(b.vx)*4.2;}
+    draw();requestAnimationFrame(step);
+  }
+  document.getElementById('serve').addEventListener('click',function(){reset();if(still)draw()});
+  draw();if(!still)requestAnimationFrame(step);
+})();
+</script>
+
+</body>
+</html>
